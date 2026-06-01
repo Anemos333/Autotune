@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(FetchContent)
 FetchContent_Declare(
     juce
-    GIT_REPOSITORY "https://github.com"
+    GIT_REPOSITORY "https://github.com/juce-framework/JUCE.git"
     GIT_TAG        main # Scarica l'ultima versione stabile di JUCE 8
 )
 FetchContent_MakeAvailable(juce)
