@@ -22,9 +22,12 @@ jobs:
 
     - name: Configurare CMake
       run: |
+        rm -rf build
         cmake -B build \
           -DCMAKE_BUILD_TYPE=Release \
           -DJUCE_BUILD_EXTRAS=OFF
+
+       
 
     - name: Compilare il Plugin
       run: |
