@@ -8,25 +8,25 @@ on:
 
 jobs:
   build-mac:
-    runs-on: macos-latest
+    runs-on: macos-14
 
     steps:
     - name: Checkout del codice
       uses: actions/checkout@v4
       with:
         submodules: recursive
-
+    - name: Configure
+      run: |
+        cmake -B build -G Xcode \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
     - name: Configurare CMake
       run: |
         rm -rf build
         cmake -B build \
           -DCMAKE_BUILD_TYPE=Release \
           -DJUCE_BUILD_EXTRAS=OFF
-    - name: Configure
-      run: |
-        cmake -B build -G Xcode \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+   
     - name: Compilare il Plugin
       run: |
         cmake --build build --config Release --parallel 4
