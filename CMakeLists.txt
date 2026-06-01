@@ -6,8 +6,22 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # JUCE path
-set(JUCE_PATH "C:/Users/gugli/OneDrive/Desktop/JUCE")
-add_subdirectory(${JUCE_PATH} ${CMAKE_BINARY_DIR}/JUCE)
+cmake_minimum_required(VERSION 3.22)
+project(AutotuneMicrotonale VERSION 1.0.0 LANGUAGES CXX)
+
+# --- SCARICAMENTO AUTOMATICO DI JUCE ---
+include(FetchContent)
+FetchContent_Declare(
+    juce
+    GIT_REPOSITORY https://github.com
+    GIT_TAG        8.0.12 # Cambia questa versione se usi JUCE 8 (es. 8.0.4)
+)
+FetchContent_MakeAvailable(juce)
+# ----------------------------------------
+
+# Se hai Antigravity come cartella locale o repo, assicurati che il percorso non sia fisso (C:/...)
+# Se è una cartella dentro al tuo progetto, usa ${CMAKE_CURRENT_SOURCE_DIR}/nome_cartella
+
 
 # Binary data for background images
 juce_add_binary_data(BinaryData
