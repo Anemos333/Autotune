@@ -34,10 +34,10 @@ jobs:
       run: |
         # Comprime il VST3 generato in un file ZIP per poterlo scaricare facilmente
         cd build/${{ github.event.repository.name }}_artefacts/Release/VST3
-        zip -r ../../../../IlTuoPlugin_Mac_VST3.zip ./*
+        zip -r ../../../../MicrotonalAutotune_Mac_VST3.zip ./*
 
     - name: Caricare l'Artefatto su GitHub
       uses: actions/upload-artifact@v4
       with:
-        name: IlTuoPlugin-macOS-VST3
-        path: IlTuoPlugin_Mac_VST3.zip
+        name: MicrotonalAutotune-macOS-VST3
+        path: MicrotonalAutotune_Mac_VST3.zip
