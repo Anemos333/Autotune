@@ -22,7 +22,11 @@ jobs:
         cmake -B build \
           -DCMAKE_BUILD_TYPE=Release \
           -DJUCE_BUILD_EXTRAS=OFF
-
+    - name: Configure
+      run: |
+        cmake -B build -G Xcode \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
     - name: Compilare il Plugin
       run: |
         cmake --build build --config Release --parallel 4
