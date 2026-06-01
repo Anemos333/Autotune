@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
     juce
     GIT_REPOSITORY "https://github.com/juce-framework/JUCE.git"
-    GIT_TAG        main # Scarica l'ultima versione stabile di JUCE 8
+    GIT_TAG        8.0.12 # Scarica l'ultima versione stabile di JUCE 8
 )
 FetchContent_MakeAvailable(juce)
 
