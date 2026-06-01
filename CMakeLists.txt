@@ -1,22 +1,19 @@
 cmake_minimum_required(VERSION 3.22)
-
 project(MicrotonalAutotune VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# JUCE path
-cmake_minimum_required(VERSION 3.22)
-project(AutotuneMicrotonale VERSION 1.0.0 LANGUAGES CXX)
-
 # --- SCARICAMENTO AUTOMATICO DI JUCE ---
 include(FetchContent)
 FetchContent_Declare(
     juce
-    GIT_REPOSITORY https://github.com
-    GIT_TAG        8.0.12 # Cambia questa versione se usi JUCE 8 (es. 8.0.4)
+    GIT_REPOSITORY "https://github.com"
+    GIT_TAG        main # Scarica l'ultima versione stabile di JUCE 8
 )
 FetchContent_MakeAvailable(juce)
+
+
 # ----------------------------------------
 
 # Se hai Antigravity come cartella locale o repo, assicurati che il percorso non sia fisso (C:/...)
