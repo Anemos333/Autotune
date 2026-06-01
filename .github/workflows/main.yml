@@ -14,20 +14,14 @@ jobs:
     - name: Checkout del codice
       uses: actions/checkout@v4
       with:
-        submodules: recursive # Necessario se usi i sottomoduli Git per JUCE/Antigravity
-
-    - name: Installare dipendenze di sistema
-      run: |
-        # macOS ha già Xcode e le build tools installate, ma puoi aggiungere altre dipendenze qui se servono
+        submodules: recursive
 
     - name: Configurare CMake
       run: |
         rm -rf build
         cmake -B build \
           -DCMAKE_BUILD_TYPE=Release \
-          -DJUCE_BUILD_EXTRAS=ON
-
-       
+          -DJUCE_BUILD_EXTRAS=OFF
 
     - name: Compilare il Plugin
       run: |
@@ -35,8 +29,8 @@ jobs:
 
     - name: Architettare il file VST3
       run: |
-        # Comprime il VST3 generato in un file ZIP per poterlo scaricare facilmente
-        cd build/${{ github.event.repository.name }}_artefacts/Release/VST3
+        # Usiamo il path standard generato da JUCE usando il Product Name
+        cd build/MicrotonalAutotune_artefacts/Release/VST3
         zip -r ../../../../MicrotonalAutotune_Mac_VST3.zip ./*
 
     - name: Caricare l'Artefatto su GitHub
