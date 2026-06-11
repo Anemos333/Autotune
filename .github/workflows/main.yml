@@ -47,11 +47,16 @@ jobs:
 
           file "$BIN"
           lipo -info "$BIN"
+      - name: Applica firma Ad-Hoc (Codisign locale)
+        run: |
+            BIN=$(find build -path "*VST3/*.vst3/Contents/MacOS/*" | head -n 1)
+            echo "Firmando localmente il binario: $BIN"
+            codesign --force --deep --sign - "build/MicrotonalAutotune_artefacts/Release/VST3/MicrotonalAutotune.vst3"
 
       - name: Crea archivio ZIP
         run: |
           cd build/MicrotonalAutotune_artefacts/Release/VST3
-          zip -r ../../../../MicrotonalAutotune_Mac_VST3.zip ./*
+          zip -ry ../../../../MicrotonalAutotune_Mac_VST3.zip ./*
 
       - name: Carica artefatto
         uses: actions/upload-artifact@v4
